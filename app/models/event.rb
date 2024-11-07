@@ -9,6 +9,10 @@ class Event < ApplicationRecord
   # Ensure the description is present and not too long
   validates :description, presence: true, length: { maximum: 500 }
 
+  # Scopes
+  # scope :added_in_last_30_days, -> { where("created_at >= ?", 30.days.ago) }
+  scope :concert_events, -> { where("description LIKE ?", "%concert%") }
+
   private
 
   # Custom date validation to check that the event's date is not in the past

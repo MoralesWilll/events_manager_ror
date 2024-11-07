@@ -13,4 +13,18 @@
   <% end %>
 </div>
 
+<div id="concert_events">
+  <h2>Concert events</h2>
+  <% if @concert_events.present? %>
+    <% @concert_events.each do |event| %>
+      <%= render event %>
+      <p>
+        <%= link_to "Show this event", event %>
+      </p>
+    <% end %>
+  <% else %>
+    <p>No concert events found.</p>
+  <% end %>
+</div>
+
 <%= link_to "New event", new_event_path %>
