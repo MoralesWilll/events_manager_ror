@@ -1,5 +1,6 @@
+<main class="container p-8 mx-auto">
 <% content_for :title, "Editing event" %>
-
+<div class="flex-col">
 <h1>Editing event</h1>
 
 <%= render "form", event: @event %>
@@ -10,3 +11,5 @@
   <%= link_to "Show this event", @event %> |
   <%= link_to "Back to events", events_path %>
 </div>
+</div>
+</main>

@@ -1,31 +1,33 @@
-<%= form_with(model: @event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation" style="color: red">
-      <h2><%=pluralize(@event.errors.count, "error")%> prohibited this event from being saved:</h2>
-      <ul>
-        <%=@event.errors.full_messages.each do |message| %>
-        <li> <%= message %> </li>
-        <%end%>
+<%= form_with(model: @event, local: true, class:"max-w-md") do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation" class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+      <h2 class="font-bold text-lg">
+        <%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:
+      </h2>
+      <ul class="list-disc pl-5 mt-2">
+        <%= @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="mb-4">
+    <%= form.label :name, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.text_field :name, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :date, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.date_field :date, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+  </div>
+
+  <div class="mb-4">
+    <%= form.label :description, class: "block text-gray-700 font-semibold mb-2" %>
+    <%= form.text_area :description, class: "w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 
   <div>
-    <%= form.label :date, style: "display: block" %>
-    <%= form.date_field :date %>
-  </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Submit", class: "w-full bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500" %>
   </div>
 <% end %>
